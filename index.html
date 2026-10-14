@@ -3,600 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barock, Klassizismus & Historismus</title>
-
+<meta name="description" content="Eine einfache Lernseite zu Barock, Klassizismus und Historismus.">
+<title>Pepe – Kunstgeschichte</title>
 <style>
-    * {
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f2f2f2;
-        color: #222;
-        line-height: 1.6;
-    }
-
-    header {
-        background: #333;
-        color: white;
-        padding: 25px;
-        text-align: center;
-    }
-
-    header h1 {
-        margin: 0 0 8px;
-    }
-
-    nav {
-        background: #555;
-        padding: 12px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin: 0 10px;
-        padding: 7px 10px;
-        border-radius: 5px;
-    }
-
-    nav a:hover {
-        background: #777;
-    }
-
-    main {
-        max-width: 1000px;
-        margin: auto;
-        padding: 25px;
-    }
-
-    section {
-        background: white;
-        margin-bottom: 30px;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 2px 7px #ccc;
-        scroll-margin-top: 70px;
-    }
-
-    h2 {
-        border-bottom: 2px solid #555;
-        padding-bottom: 8px;
-    }
-
-    h3 {
-        margin-top: 25px;
-    }
-
-    .begriff {
-        color: #174a7e;
-        font-weight: bold;
-        cursor: pointer;
-        text-decoration: underline;
-    }
-
-    .erklaerung {
-        display: none;
-        background: #eef4fa;
-        border-left: 4px solid #174a7e;
-        padding: 10px;
-        margin: 8px 0;
-        border-radius: 5px;
-    }
-
-    .boxen {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .box {
-        flex: 1;
-        min-width: 220px;
-        background: #f5f5f5;
-        padding: 15px;
-        border-radius: 8px;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-    }
-
-    th, td {
-        border: 1px solid #ccc;
-        padding: 10px;
-        text-align: left;
-    }
-
-    th {
-        background: #ddd;
-    }
-
-    .quizfrage {
-        background: #f5f5f5;
-        padding: 15px;
-        margin: 15px 0;
-        border-radius: 8px;
-    }
-
-    button {
-        padding: 9px 14px;
-        border: none;
-        border-radius: 5px;
-        background: #444;
-        color: white;
-        cursor: pointer;
-        margin: 4px;
-    }
-
-    button:hover {
-        background: #222;
-    }
-
-    .richtig {
-        color: green;
-        font-weight: bold;
-    }
-
-    .falsch {
-        color: red;
-        font-weight: bold;
-    }
-
-    #ergebnis {
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 15px;
-    }
-
-    footer {
-        background: #333;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-
-    @media (max-width: 600px) {
-        nav a {
-            display: inline-block;
-            margin: 4px;
-        }
-
-        main {
-            padding: 10px;
-        }
-    }
+* { box-sizing: border-box; scroll-behavior: smooth; }
+:root { --dunkel:#343434; --hell:#f3f3f3; --blau:#245b83; }
+body { margin:0; font-family:Arial, sans-serif; background:var(--hell); color:#222; line-height:1.65; }
+header { background:var(--dunkel); color:white; padding:32px 18px; text-align:center; }
+header h1 { margin:0 0 6px; font-size:clamp(1.7rem, 4vw, 2.6rem); }
+nav { background:#4b4b4b; padding:10px 12px; display:flex; justify-content:center; flex-wrap:wrap; gap:6px; position:sticky; top:0; z-index:10; }
+nav a { color:white; text-decoration:none; padding:8px 11px; border-radius:5px; }
+nav a:hover, nav a:focus { background:#6b6b6b; outline-offset:2px; }
+main { width:min(100% - 28px, 1000px); margin:24px auto; }
+section { background:white; margin-bottom:24px; padding:clamp(16px, 3vw, 28px); border-radius:10px; box-shadow:0 2px 7px #00000012; scroll-margin-top:90px; }
+h2 { border-bottom:2px solid #555; padding-bottom:8px; }
+h3 { margin-top:22px; }
+.hero-img, .topic-img { display:block; width:100%; object-fit:cover; border-radius:8px; }
+.hero-img { max-height:360px; }
+.topic-img { height:230px; margin:12px 0 18px; }
+.caption { font-size:.85rem; color:#555; margin-top:4px; }
+.boxen { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; }
+.box { background:#f5f5f5; padding:16px; border-radius:8px; min-width:0; }
+.begriff { color:var(--blau); font-weight:bold; cursor:pointer; text-decoration:underline; text-decoration-style:dotted; text-underline-offset:3px; }
+.erklaerung { display:none; background:#eef4fa; border-left:4px solid var(--blau); padding:11px 13px; margin:8px 0; border-radius:5px; }
+.erklaerung.zeigen { display:block; }
+button { font:inherit; padding:9px 13px; border:0; border-radius:5px; background:#444; color:white; cursor:pointer; margin:4px 3px 4px 0; }
+button:hover { background:#222; }
+button:focus-visible, a:focus-visible { outline:3px solid #77b9f0; outline-offset:2px; }
+table { width:100%; border-collapse:collapse; margin-top:15px; }
+th, td { border:1px solid #ccc; padding:10px; text-align:left; }
+th { background:#e6e6e6; }
+.quizfrage { background:#f5f5f5; padding:15px; margin:15px 0; border-radius:8px; }
+.quizfrage p { margin-bottom:0; font-weight:bold; }
+.richtig { color:#176b2c; } .falsch { color:#b42318; }
+#ergebnis { font-size:1.1rem; font-weight:bold; margin:15px 0; }
+footer { background:var(--dunkel); color:white; text-align:center; padding:20px; }
+@media (max-width:700px) {
+  nav { position:static; }
+  nav a { flex:1 1 28%; text-align:center; font-size:.95rem; }
+  .boxen { grid-template-columns:1fr; }
+  .topic-img { height:190px; }
+  table { display:block; overflow-x:auto; white-space:normal; }
+  th, td { min-width:115px; }
+}
+@media (max-width:420px) {
+  main { width:calc(100% - 16px); margin:12px auto; }
+  section { padding:14px; }
+  nav a { flex-basis:42%; }
+  button { max-width:100%; }
+}
 </style>
 </head>
-
 <body>
-
 <header>
-    <h1>Barock, Klassizismus & Historismus</h1>
-    <p>Eine einfache Übersicht für den Kunstunterricht</p>
+  <h1>Pepe – Kunstgeschichte</h1>
+  <p>Barock, Klassizismus und Historismus einfach erklärt</p>
 </header>
 
-<nav>
-    <a href="#start">Start</a>
-    <a href="#barock">Barock</a>
-    <a href="#klassizismus">Klassizismus</a>
-    <a href="#historismus">Historismus</a>
-    <a href="#vergleich">Vergleich</a>
-    <a href="#begriffe">Begriffe</a>
-    <a href="#quiz">Quiz</a>
+<nav aria-label="Seitennavigation">
+  <a href="#start">Start</a>
+  <a href="#barock">Barock</a>
+  <a href="#klassizismus">Klassizismus</a>
+  <a href="#historismus">Historismus</a>
+  <a href="#vergleich">Vergleich</a>
+  <a href="#begriffe">Begriffe</a>
+  <a href="#quiz">Quiz</a>
 </nav>
 
 <main>
-
-<!-- START -->
-
 <section id="start">
-    <h2>Start</h2>
-
-    <p>
-        Auf dieser Seite geht es um drei wichtige Kunstepochen:
-        <b>Barock</b>, <b>Klassizismus</b> und <b>Historismus</b>.
-    </p>
-
-    <div class="boxen">
-
-        <div class="box">
-            <h3>Barock</h3>
-            <p>
-                ca. 1600–1750<br>
-                Prunk, Bewegung und starke Gefühle.
-            </p>
-        </div>
-
-        <div class="box">
-            <h3>Klassizismus</h3>
-            <p>
-                ca. 1770–1840<br>
-                Orientierung an der Antike und klare Formen.
-            </p>
-        </div>
-
-        <div class="box">
-            <h3>Historismus</h3>
-            <p>
-                ca. 1850–1900<br>
-                Alte Baustile werden wieder aufgegriffen.
-            </p>
-        </div>
-
-    </div>
+  <h2>Start</h2>
+  <p>Hier findest du die wichtigsten Infos zu drei Kunstepochen. Du kannst durch die Seite scrollen oder oben direkt zu einem Thema springen. Unterstrichene Begriffe kannst du anklicken, um ihre Erklärung zu sehen.</p>
+  <img class="hero-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Palace%20of%20Versailles%20-%20Main%20facade%20and%20Royal%20Gate%20with%20visitors.jpg" alt="Schloss Versailles als Beispiel für prachtvolle Architektur" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+  <p class="caption" style="display:none"><a href="https://www.google.com/search?tbm=isch&q=Schloss+Versailles+Barock" target="_blank" rel="noopener noreferrer">Bild konnte nicht geladen werden – Bilder bei Google öffnen</a></p>
+  <p class="caption">Schloss Versailles – ein bekanntes Beispiel für die Architektur des Barock. Bild: Wikimedia Commons. <a href="https://www.google.com/search?tbm=isch&q=Schloss+Versailles+Barock" target="_blank" rel="noopener noreferrer">Weitere Bilder bei Google ansehen</a></p>
+  <div class="boxen">
+    <div class="box"><h3>Barock</h3><p><b>Ca. 1600–1750</b><br>Prunk, Bewegung und starke Gefühle.</p></div>
+    <div class="box"><h3>Klassizismus</h3><p><b>Ca. 1770–1840</b><br>Klare Formen und Vorbilder aus der Antike.</p></div>
+    <div class="box"><h3>Historismus</h3><p><b>Vor allem 19. Jahrhundert</b><br>Ältere Baustile werden wieder aufgegriffen.</p></div>
+  </div>
 </section>
-
-
-<!-- BAROCK -->
 
 <section id="barock">
-
-    <h2>Barock</h2>
-
-    <p>
-        Der Barock entstand ungefähr um 1600 und dauerte bis etwa 1750.
-        Besonders wichtig waren Kirchen, Schlösser und große Herrscherhöfe.
-    </p>
-
-    <h3>Typische Merkmale</h3>
-
-    <ul>
-        <li><span class="begriff" onclick="begriff('prunk')">Prunk</span></li>
-        <li>reiche Verzierungen</li>
-        <li>starke Hell-Dunkel-Kontraste</li>
-        <li>Bewegung und Dramatik</li>
-        <li>große und beeindruckende Gebäude</li>
-    </ul>
-
-    <div id="prunk" class="erklaerung">
-        <b>Prunk:</b> Sehr aufwendige und beeindruckende Gestaltung.
-        Zum Beispiel viel Gold, große Räume, Verzierungen und kostbare Materialien.
-    </div>
-
-    <h3>Architektur</h3>
-
-    <p>
-        Barocke Gebäude sollten die Menschen beeindrucken.
-        Besonders Kirchen und Schlösser wurden sehr aufwendig gestaltet.
-    </p>
-
-    <p>
-        Beispiele sind Schloss Versailles und die Würzburger Residenz.
-    </p>
-
-    <h3>Kunst</h3>
-
-    <p>
-        In Gemälden sieht man häufig starke Gefühle, Bewegung und
-        deutliche Hell-Dunkel-Effekte.
-    </p>
-
+  <h2>Barock</h2>
+  <img class="topic-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Palace%20of%20Versailles%20-%20Main%20facade%20and%20Royal%20Gate%20with%20visitors.jpg" alt="Schloss Versailles als Beispiel für Barockarchitektur" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><p class="caption" style="display:none"><a href="https://www.google.com/search?tbm=isch&q=Barock+Schloss+Versailles" target="_blank" rel="noopener noreferrer">Bild konnte nicht geladen werden – Barockbilder bei Google öffnen</a></p>
+  <p>Der Barock entstand um 1600 und dauerte ungefähr bis 1750. Kirchen und Schlösser wurden oft besonders groß und aufwendig gestaltet. Herrscher nutzten solche Gebäude auch, um Macht zu zeigen.</p>
+  <h3>Typische Merkmale</h3>
+  <ul>
+    <li><span class="begriff" role="button" tabindex="0" onclick="begriff('prunk1')" onkeydown="begriffTastatur(event,'prunk1')">Prunk</span> und viele Verzierungen</li>
+    <li>Bewegung und Dramatik</li>
+    <li>starke Hell-Dunkel-Kontraste in Gemälden</li>
+    <li>große Kirchen und Schlösser</li>
+  </ul>
+  <div id="prunk1" class="erklaerung"><b>Prunk:</b> Eine besonders prächtige und aufwendige Gestaltung, zum Beispiel mit Gold, kostbaren Materialien und vielen Verzierungen.</div>
+  <h3>Woran erkennt man Barock?</h3>
+  <p>Ein Gebäude wirkt oft reich geschmückt und beeindruckend. In Gemälden gibt es häufig starke Gefühle, dramatisches Licht und viel Bewegung.</p>
 </section>
-
-
-<!-- KLASSIZISMUS -->
 
 <section id="klassizismus">
-
-    <h2>Klassizismus</h2>
-
-    <p>
-        Der Klassizismus entstand ungefähr ab 1770.
-        Künstler und Architekten orientierten sich wieder stärker
-        an der Kunst der griechischen und römischen Antike.
-    </p>
-
-    <h3>Typische Merkmale</h3>
-
-    <ul>
-        <li>klare und einfache Formen</li>
-        <li>Symmetrie</li>
-        <li>Säulen</li>
-        <li>Dreiecksgiebel</li>
-        <li>Vorbild der Antike</li>
-    </ul>
-
-    <p>
-        <span class="begriff" onclick="begriff('symmetrie')">Symmetrie</span>
-        bedeutet, dass etwas auf beiden Seiten ähnlich oder gleich aufgebaut ist.
-    </p>
-
-    <div id="symmetrie" class="erklaerung">
-        <b>Symmetrie:</b> Eine Gestaltung ist gleichmäßig aufgebaut.
-        Wenn man ein Gebäude in der Mitte teilt, sehen beide Seiten oft ähnlich aus.
-    </div>
-
-    <h3>Architektur</h3>
-
-    <p>
-        Klassizistische Gebäude wirken meistens ruhig, ordentlich und
-        übersichtlich. Häufig findet man Säulen und große Eingänge.
-    </p>
-
+  <h2>Klassizismus</h2>
+  <img class="topic-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Brandenburg%20Gate.jpg" alt="Brandenburger Tor mit Säulen und klassizistischer Gestaltung" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><p class="caption" style="display:none"><a href="https://www.google.com/search?tbm=isch&q=Klassizismus+Brandenburger+Tor" target="_blank" rel="noopener noreferrer">Bild konnte nicht geladen werden – Bilder bei Google öffnen</a></p>
+  <p>Der Klassizismus wurde ab ungefähr 1770 wichtig. Künstler und Architekten orientierten sich an der Kunst und Architektur des alten Griechenlands und Roms, also an der <span class="begriff" role="button" tabindex="0" onclick="begriff('antike1')" onkeydown="begriffTastatur(event,'antike1')">Antike</span>.</p>
+  <div id="antike1" class="erklaerung"><b>Antike:</b> Eine historische Epoche, zu der unter anderem das alte Griechenland und das Römische Reich gehören.</div>
+  <h3>Typische Merkmale</h3>
+  <ul>
+    <li>klare, ruhige Formen</li>
+    <li><span class="begriff" role="button" tabindex="0" onclick="begriff('symmetrie1')" onkeydown="begriffTastatur(event,'symmetrie1')">Symmetrie</span></li>
+    <li>Säulen und Dreiecksgiebel</li>
+    <li>weniger üppige Verzierungen als im Barock</li>
+  </ul>
+  <div id="symmetrie1" class="erklaerung"><b>Symmetrie:</b> Die Teile einer Gestaltung sind gleichmäßig angeordnet. Beide Seiten eines Gebäudes sehen oft ähnlich aus.</div>
+  <p>Das Brandenburger Tor in Berlin ist ein bekanntes Beispiel für klassizistische Architektur.</p>
 </section>
-
-
-<!-- HISTORISMUS -->
 
 <section id="historismus">
-
-    <h2>Historismus</h2>
-
-    <p>
-        Der Historismus war besonders im 19. Jahrhundert verbreitet.
-        Architekten verwendeten Formen aus früheren Epochen.
-    </p>
-
-    <h3>Typische Merkmale</h3>
-
-    <ul>
-        <li>Orientierung an älteren Baustilen</li>
-        <li>Mischung verschiedener Stile</li>
-        <li>viele Verzierungen</li>
-        <li>große öffentliche Gebäude</li>
-    </ul>
-
-    <p>
-        <span class="begriff" onclick="begriff('neostil')">Neostil</span>
-        bedeutet, dass ein älterer Baustil wieder verwendet wird.
-    </p>
-
-    <div id="neostil" class="erklaerung">
-        <b>Neostil:</b> Ein früherer Baustil wird in einer späteren Zeit
-        erneut verwendet, zum Beispiel Neogotik oder Neorenaissance.
-    </div>
-
-    <h3>Beispiele</h3>
-
-    <p>
-        Typisch sind Gebäude im Stil der Neogotik, Neorenaissance oder
-        Neobarock.
-    </p>
-
+  <h2>Historismus</h2>
+  <img class="topic-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Palais%20Garnier%2C%20Paris.jpg" alt="Palais Garnier in Paris mit reich verzierter Fassade" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><p class="caption" style="display:none"><a href="https://www.google.com/search?tbm=isch&q=Historismus+Architektur+Palais+Garnier" target="_blank" rel="noopener noreferrer">Bild konnte nicht geladen werden – Bilder bei Google öffnen</a></p>
+  <p>Der Historismus war vor allem im 19. Jahrhundert verbreitet. Architekten griffen auf Baustile aus früheren Zeiten zurück oder kombinierten mehrere Stile miteinander.</p>
+  <h3>Typische Merkmale</h3>
+  <ul>
+    <li>ältere Baustile werden wieder verwendet</li>
+    <li>viele Verzierungen und auffällige Fassaden</li>
+    <li>verschiedene Stile können gemischt werden</li>
+  </ul>
+  <p><span class="begriff" role="button" tabindex="0" onclick="begriff('neostil1')" onkeydown="begriffTastatur(event,'neostil1')">Neostil</span> ist eine Bezeichnung für die erneute Verwendung eines älteren Stils.</p>
+  <div id="neostil1" class="erklaerung"><b>Neostil:</b> Ein älterer Baustil wird später erneut verwendet, zum Beispiel Neogotik oder Neorenaissance.</div>
+  <p>Ein Gebäude aus dieser Zeit kann zum Beispiel wie eine mittelalterliche Burg, eine gotische Kirche oder ein Renaissance-Palast aussehen.</p>
 </section>
-
-
-<!-- VERGLEICH -->
 
 <section id="vergleich">
-
-    <h2>Vergleich</h2>
-
+  <h2>Vergleich</h2>
+  <div style="overflow-x:auto">
     <table>
-        <tr>
-            <th>Epoche</th>
-            <th>Zeit</th>
-            <th>Typisch</th>
-        </tr>
-
-        <tr>
-            <td>Barock</td>
-            <td>ca. 1600–1750</td>
-            <td>Prunk, Bewegung, starke Gefühle</td>
-        </tr>
-
-        <tr>
-            <td>Klassizismus</td>
-            <td>ca. 1770–1840</td>
-            <td>Antike, Ordnung, Symmetrie</td>
-        </tr>
-
-        <tr>
-            <td>Historismus</td>
-            <td>ca. 1850–1900</td>
-            <td>alte Baustile, Neostile, Mischung</td>
-        </tr>
+      <thead><tr><th>Epoche</th><th>Zeitraum</th><th>Typisch</th><th>Wirkung</th></tr></thead>
+      <tbody>
+        <tr><td>Barock</td><td>ca. 1600–1750</td><td>Prunk, Bewegung, Verzierungen</td><td>Beeindruckend und dramatisch</td></tr>
+        <tr><td>Klassizismus</td><td>ca. 1770–1840</td><td>Antike, Säulen, Symmetrie</td><td>Ruhig und geordnet</td></tr>
+        <tr><td>Historismus</td><td>vor allem 19. Jahrhundert</td><td>Wiederaufnahme älterer Stile</td><td>Je nach gewähltem Stil unterschiedlich</td></tr>
+      </tbody>
     </table>
-
+  </div>
 </section>
-
-
-<!-- BEGRIFFE -->
 
 <section id="begriffe">
-
-    <h2>Begriffe erklärt</h2>
-
-    <p>
-        Klicke auf einen Begriff, um die Erklärung anzuzeigen.
-    </p>
-
-    <button onclick="begriff('erklaerungPrunk')">Prunk</button>
-    <button onclick="begriff('erklaerungAntike')">Antike</button>
-    <button onclick="begriff('erklaerungSymmetrie')">Symmetrie</button>
-    <button onclick="begriff('erklaerungGotik')">Gotik</button>
-    <button onclick="begriff('erklaerungSaeulen')">Säulen</button>
-    <button onclick="begriff('erklaerungNeostil')">Neostil</button>
-
-    <div id="erklaerungPrunk" class="erklaerung">
-        <b>Prunk:</b> Besonders aufwendige und prächtige Gestaltung.
-    </div>
-
-    <div id="erklaerungAntike" class="erklaerung">
-        <b>Antike:</b> Eine historische Epoche des alten Griechenlands und Roms.
-    </div>
-
-    <div id="erklaerungSymmetrie" class="erklaerung">
-        <b>Symmetrie:</b> Eine gleichmäßige Anordnung von Formen oder Teilen.
-    </div>
-
-    <div id="erklaerungGotik" class="erklaerung">
-        <b>Gotik:</b> Ein mittelalterlicher Baustil mit hohen Gebäuden,
-        Spitzbögen und großen Fenstern.
-    </div>
-
-    <div id="erklaerungSaeulen" class="erklaerung">
-        <b>Säulen:</b> Senkrechte Bauteile, die Gebäude tragen und oft auch
-        zur Verzierung verwendet werden.
-    </div>
-
-    <div id="erklaerungNeostil" class="erklaerung">
-        <b>Neostil:</b> Ein älterer Baustil wird später erneut verwendet.
-    </div>
-
+  <h2>Begriffe zum Anklicken</h2>
+  <p>Klicke auf einen Begriff, um die Erklärung ein- oder auszublenden.</p>
+  <button onclick="begriff('def-prunk')">Prunk</button>
+  <div id="def-prunk" class="erklaerung"><b>Prunk:</b> Besonders prächtige, aufwendige Gestaltung mit vielen Verzierungen oder kostbaren Materialien.</div>
+  <button onclick="begriff('def-antike')">Antike</button>
+  <div id="def-antike" class="erklaerung"><b>Antike:</b> Die Zeit des alten Griechenlands und Roms.</div>
+  <button onclick="begriff('def-symmetrie')">Symmetrie</button>
+  <div id="def-symmetrie" class="erklaerung"><b>Symmetrie:</b> Eine gleichmäßige Anordnung, bei der beide Seiten ähnlich aussehen.</div>
+  <button onclick="begriff('def-gotik')">Gotik</button>
+  <div id="def-gotik" class="erklaerung"><b>Gotik:</b> Ein mittelalterlicher Baustil, bekannt für Spitzbögen, hohe Räume und große Fenster.</div>
+  <button onclick="begriff('def-saeulen')">Säulen</button>
+  <div id="def-saeulen" class="erklaerung"><b>Säulen:</b> Senkrechte Bauteile, die etwas tragen können und oft auch als Schmuck dienen.</div>
+  <button onclick="begriff('def-neostil')">Neostil</button>
+  <div id="def-neostil" class="erklaerung"><b>Neostil:</b> Ein älterer Baustil wird in einer späteren Zeit erneut verwendet.</div>
+  <button onclick="begriff('def-fassade')">Fassade</button>
+  <div id="def-fassade" class="erklaerung"><b>Fassade:</b> Die sichtbare Außenseite eines Gebäudes.</div>
 </section>
-
-
-<!-- QUIZ -->
 
 <section id="quiz">
-
-    <h2>Quiz</h2>
-
-    <p>Teste dein Wissen!</p>
-
-    <div class="quizfrage">
-        <b>1. Welche Epoche ist für Prunk bekannt?</b><br>
-        <button onclick="antwort(this, true)">Barock</button>
-        <button onclick="antwort(this, false)">Klassizismus</button>
-        <button onclick="antwort(this, false)">Historismus</button>
-        <p></p>
-    </div>
-
-    <div class="quizfrage">
-        <b>2. An welcher Epoche orientierte sich der Klassizismus?</b><br>
-        <button onclick="antwort(this, true)">Antike</button>
-        <button onclick="antwort(this, false)">Mittelalter</button>
-        <button onclick="antwort(this, false)">Steinzeit</button>
-        <p></p>
-    </div>
-
-    <div class="quizfrage">
-        <b>3. Was ist typisch für den Historismus?</b><br>
-        <button onclick="antwort(this, true)">Alte Baustile werden wieder verwendet</button>
-        <button onclick="antwort(this, false)">Nur moderne Gebäude</button>
-        <button onclick="antwort(this, false)">Keine Verzierungen</button>
-        <p></p>
-    </div>
-
-    <div class="quizfrage">
-        <b>4. Was bedeutet Symmetrie?</b><br>
-        <button onclick="antwort(this, false)">Sehr viel Gold</button>
-        <button onclick="antwort(this, true)">Gleichmäßiger Aufbau</button>
-        <button onclick="antwort(this, false)">Ein alter Baustil</button>
-        <p></p>
-    </div>
-
-    <div class="quizfrage">
-        <b>5. Welche Formen findet man häufig im Klassizismus?</b><br>
-        <button onclick="antwort(this, true)">Säulen und Dreiecksgiebel</button>
-        <button onclick="antwort(this, false)">Nur runde Häuser</button>
-        <button onclick="antwort(this, false)">Keine geometrischen Formen</button>
-        <p></p>
-    </div>
-
-    <div class="quizfrage">
-        <b>6. Wann war der Barock ungefähr?</b><br>
-        <button onclick="antwort(this, false)">1900–1950</button>
-        <button onclick="antwort(this, true)">1600–1750</button>
-        <button onclick="antwort(this, false)">800–1000</button>
-        <p></p>
-    </div>
-
-    <div class="quizfrage">
-        <b>7. Was bedeutet Neostil?</b><br>
-        <button onclick="antwort(this, true)">Ein älterer Stil wird wieder verwendet</button>
-        <button onclick="antwort(this, false)">Ein komplett neuer Stil</button>
-        <button onclick="antwort(this, false)">Ein Stil ohne Verzierungen</button>
-        <p></p>
-    </div>
-
-    <div id="ergebnis"></div>
-
-    <button onclick="quizZuruecksetzen()">Quiz zurücksetzen</button>
-
+  <h2>Quiz</h2>
+  <p>Wähle pro Frage eine Antwort aus. Am Ende siehst du deinen Punktestand.</p>
+  <div class="quizfrage" data-answer="0">
+    <b>1. Welche Epoche ist besonders für Prunk bekannt?</b><br>
+    <button onclick="antwort(this,0)">Barock</button><button onclick="antwort(this,1)">Klassizismus</button><button onclick="antwort(this,2)">Historismus</button><p aria-live="polite"></p>
+  </div>
+  <div class="quizfrage" data-answer="1">
+    <b>2. Woran orientierte sich der Klassizismus?</b><br>
+    <button onclick="antwort(this,0)">Am Mittelalter</button><button onclick="antwort(this,1)">An der Antike</button><button onclick="antwort(this,2)">An der Steinzeit</button><p aria-live="polite"></p>
+  </div>
+  <div class="quizfrage" data-answer="2">
+    <b>3. Was ist typisch für den Historismus?</b><br>
+    <button onclick="antwort(this,0)">Nur ganz einfache Formen</button><button onclick="antwort(this,1)">Keine älteren Stile</button><button onclick="antwort(this,2)">Ältere Baustile werden wieder aufgegriffen</button><p aria-live="polite"></p>
+  </div>
+  <div class="quizfrage" data-answer="1">
+    <b>4. Was bedeutet Symmetrie?</b><br>
+    <button onclick="antwort(this,0)">Viele Verzierungen</button><button onclick="antwort(this,1)">Gleichmäßiger Aufbau</button><button onclick="antwort(this,2)">Ein Baustoff</button><p aria-live="polite"></p>
+  </div>
+  <div class="quizfrage" data-answer="0">
+    <b>5. Was passt zum Klassizismus?</b><br>
+    <button onclick="antwort(this,0)">Säulen und klare Formen</button><button onclick="antwort(this,1)">Nur goldene Verzierungen</button><button onclick="antwort(this,2)">Moderne Glasfassaden</button><p aria-live="polite"></p>
+  </div>
+  <div class="quizfrage" data-answer="2">
+    <b>6. Was ist eine Fassade?</b><br>
+    <button onclick="antwort(this,0)">Ein Gemälde</button><button onclick="antwort(this,1)">Ein Dachziegel</button><button onclick="antwort(this,2)">Die Außenseite eines Gebäudes</button><p aria-live="polite"></p>
+  </div>
+  <div class="quizfrage" data-answer="1">
+    <b>7. Welche Zeit passt ungefähr zum Barock?</b><br>
+    <button onclick="antwort(this,0)">1900–1950</button><button onclick="antwort(this,1)">1600–1750</button><button onclick="antwort(this,2)">800–1000</button><p aria-live="polite"></p>
+  </div>
+  <div class="quizfrage" data-answer="0">
+    <b>8. Was ist ein Neostil?</b><br>
+    <button onclick="antwort(this,0)">Ein älterer Stil wird erneut verwendet</button><button onclick="antwort(this,1)">Ein Stil ohne Geschichte</button><button onclick="antwort(this,2)">Ein bestimmtes Baumaterial</button><p aria-live="polite"></p>
+  </div>
+  <div id="ergebnis" aria-live="polite">Punkte: 0 / 8</div>
+  <button onclick="quizZuruecksetzen()">Quiz neu starten</button>
 </section>
-
 </main>
-
-<footer>
-    Kunstgeschichte – Barock, Klassizismus & Historismus
-</footer>
-
+<footer>Pepe · Kunstgeschichte</footer>
 
 <script>
-
+function begriff(id) {
+  const element = document.getElementById(id);
+  if (element) element.classList.toggle('zeigen');
+}
+function begriffTastatur(event, id) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    begriff(id);
+  }
+}
 let punkte = 0;
 let beantwortet = 0;
-
-function begriff(id) {
-
-    let element = document.getElementById(id);
-
-    if (element.style.display === "block") {
-        element.style.display = "none";
-    } else {
-        element.style.display = "block";
-    }
+function antwort(button, auswahl) {
+  const frage = button.closest('.quizfrage');
+  if (frage.dataset.beantwortet === 'ja') return;
+  frage.dataset.beantwortet = 'ja';
+  beantwortet++;
+  const richtig = auswahl === Number(frage.dataset.answer);
+  const ausgabe = frage.querySelector('p');
+  if (richtig) {
+    punkte++;
+    button.style.background = '#176b2c';
+    ausgabe.textContent = 'Richtig!';
+    ausgabe.className = 'richtig';
+  } else {
+    button.style.background = '#b42318';
+    ausgabe.textContent = 'Leider falsch.';
+    ausgabe.className = 'falsch';
+    const buttons = frage.querySelectorAll('button');
+    buttons[Number(frage.dataset.answer)].style.background = '#176b2c';
+  }
+  document.getElementById('ergebnis').textContent =
+    'Punkte: ' + punkte + ' / 8 · Beantwortet: ' + beantwortet + ' / 8';
 }
-
-
-function antwort(button, richtig) {
-
-    let frage = button.parentElement;
-
-    // Damit man eine Frage nicht mehrfach beantworten kann
-    if (frage.dataset.beantwortet === "ja") {
-        return;
-    }
-
-    frage.dataset.beantwortet = "ja";
-    beantwortet++;
-
-    let ausgabe = frage.querySelector("p");
-
-    if (richtig) {
-        button.style.background = "green";
-        ausgabe.textContent = "Richtig!";
-        ausgabe.className = "richtig";
-        punkte++;
-    } else {
-        button.style.background = "red";
-        ausgabe.textContent = "Leider falsch.";
-        ausgabe.className = "falsch";
-    }
-
-    document.getElementById("ergebnis").textContent =
-        "Punktestand: " + punkte + " / " + beantwortet;
-}
-
-
 function quizZuruecksetzen() {
-
-    punkte = 0;
-    beantwortet = 0;
-
-    document.getElementById("ergebnis").textContent = "";
-
-    let fragen = document.querySelectorAll(".quizfrage");
-
-    fragen.forEach(function(frage) {
-
-        frage.dataset.beantwortet = "nein";
-
-        let buttons = frage.querySelectorAll("button");
-
-        buttons.forEach(function(button) {
-            button.style.background = "#444";
-        });
-
-        let ausgabe = frage.querySelector("p");
-        ausgabe.textContent = "";
-        ausgabe.className = "";
-    });
+  punkte = 0;
+  beantwortet = 0;
+  document.querySelectorAll('.quizfrage').forEach(frage => {
+    frage.dataset.beantwortet = 'nein';
+    frage.querySelectorAll('button').forEach(button => button.style.background = '#444');
+    const ausgabe = frage.querySelector('p');
+    ausgabe.textContent = '';
+    ausgabe.className = '';
+  });
+  document.getElementById('ergebnis').textContent = 'Punkte: 0 / 8';
 }
-
 </script>
-
 </body>
 </html>
